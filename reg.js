@@ -10,12 +10,13 @@ module.exports = function () {
 
 
     //adds to db
-    async function add(regNumb) {
+    async function addReg(regNumb) {
 
         if (!regNumb == "") {//if input is not empty
             var tested = /C[AYJ] \d{3,6}$/.test(regNumb)
 
             if (tested) {
+                //splitting reg into code and number 
                 const code = regNumb.substring(0, 2)
                 const theId = await pool.query(`select id from towns where code = $1`, [code])
                 const id = theId.rows[0].id
@@ -34,25 +35,29 @@ module.exports = function () {
         }
     }
 
-    async function addReg(registrations) {
-        let data = [
-            registrations.reg_numb,
-            registrations.town_id
-        ];
-        return pool.query(`insert into reg(reg_numb, town_id) 
-                    values ($1, $2)`, data);
+    async function filterReg(town) {
+        if (town === "all") {
+            const filtering = await pool.query(`select reg_numb from reg`)
+            return filtering.rows
+        }
+        else {
+         const others = await pool.query(`select * from reg where town_id = $1`, [town])
+         return others.rows
+        }
     }
 
     async function allReg() {
         const regs = await pool.query('select reg_numb from reg');
         return regs.rows;
     }
+
     async function clear() {
         const clear = await pool.query('delete from reg');
+        return clear.rows
     }
     return {
-        add,
         addReg,
+        filterReg,
         allReg,
         clear
     }

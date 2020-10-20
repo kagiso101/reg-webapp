@@ -10,5 +10,5 @@ create table reg
     id serial not null primary key,
     reg_numb varchar not null,
     town_id int,
-    foreign key (town_id) references town(id)
+    foreign key (town_id) references towns(id)
 );

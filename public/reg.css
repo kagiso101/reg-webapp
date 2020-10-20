@@ -1,32 +1,32 @@
 @media only screen and (min-width: 200px) {
 	body {
 		font-family: 'Press Start 2P', cursive;
-		background-color:black;
+		background-color: black;
 		color: #0dff00;
-    }
-    .topnav {
-        overflow: hidden;
-        background-color: #333;
-      }
-      
-      .topnav a {
-        float: left;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-      }
-      
-      .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-      }
-      
-      .topnav a.active {
-        background-color:#0dff00;
-        color: white;
-      }
+	}
+	.container{
+		text-align: center;
+	}
+	.topnav {
+		overflow: hidden;
+		background-color: #333;
+	}
+	.topnav a {
+		float: left;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+	}
+	.topnav a:hover {
+		background-color: #ddd;
+		color: black;
+	}
+	.topnav a.active {
+		background-color: #0dff00;
+		color: white;
+	}
 	.header {
 		text-align: center;
 	}
@@ -41,7 +41,6 @@
 		text-align: center;
 		margin-top: 2em;
 		color: #000000;
-		
 		font-family: 'Press Start 2P', cursive;
 	}
 	.displayReg {
@@ -49,15 +48,10 @@
 		text-align: center;
 		padding: 2em;
 		font-stretch: expanded;
-		
 	}
-	.ol {
-		text-align: center;
-	}
-	.li {
-		text-align: center;
-		font-family: 'Press Start 2P', cursive;
-		color: #0dff00;
+	.ul {
+		display: inline-block;
+		list-style: none;
 	}
 	input {
 		text-align: center;
@@ -69,17 +63,15 @@
 	button {
 		cursor: default;
 		padding: 9px;
-		background:#0dff00;
+		background: #0dff00;
 		color: #000;
 		border-radius: 12px;
 		font-size: 20px;
 		font-family: 'Press Start 2P', cursive;
-		
 	}
 	.the_list {
 		text-align: center;
 	}
-	
 	button:hover, button:focus {
 		background-color: #0dff00;
 		color: #000;
@@ -93,7 +85,6 @@
 		line-height: 48px;
 		margin: 0 0 50px;
 		text-align: center;
-		
 	}
 	h2 {
 		color: #0dff00;
@@ -102,11 +93,9 @@
 		font-weight: bold;
 		line-height: 32px;
 		margin: 0 0 24px;
-	
 	}
 	p {
 		color: #0dff00;
-		
 		font-family: 'Press Start 2P', cursive;
 		font-size: 25px;
 		line-height: 24px;
@@ -131,11 +120,19 @@
 	}
 	li {
 		padding: 1em;
-		/* margin: auto; */
+		margin: 1em;
 		list-style: none;
-		font-family: 'Press Start 2P', cursive;
+		color: #0dff00;
 	}
 	.error {
 		color: red;
+	}
+	.regColor {
+		border: solid #0dff00 0.2em;
+		padding: 1em;
+		margin: 1em;
+		border-radius: 1em;
+		color: #0dff00;
+		display: inline-block;
 	}
 }

@@ -40,21 +40,37 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.get('/', function (req, res) {
-    res.render('home')
+app.get('/', async function (req, res) {
+
+    var all = await reg.allReg()
+
+    res.render('home', {
+        regNumb: all
+    })
 })
+
 app.post('/reg_numbers', async function (req, res) {
+
     var numb = req.body.regInput
-    var added = await reg.add(numb)
 
-    console.log(added)
+    await reg.addReg(numb)
+    var all = await reg.allReg()
 
-    res.render('home')
+    res.render('home', {
+        regNumb: all
+    })
+
+
 })
 
-app.get('/reg_numbers', function (req, res) {
-    var filter = req.body.filter
+app.get('/reg_numbers', async function (req, res) {
+    var filter = req.query.filter
 
+    const filtering = await reg.filterReg(filter)
+
+    res.render('home', {
+        regNumb: filtering
+    })
 })
 
 

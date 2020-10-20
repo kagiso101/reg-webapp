@@ -1,5 +1,6 @@
 <div class="row">
     <form action="/reg_numbers" method="POST">
+
         <div class="header">
             <h1>The RegNumber Display</h1>
         </div>
@@ -15,22 +16,27 @@
         </div>
     </form>
 
-
+<form action="/reg_numbers" method="GET">
     <div class="dropDown ">
         <select name="filter">
             <option value="all">All</option>
-            <option value="CA">Cape Town</option>
-            <option value="CJ">Paarl</option>
-            <option value="CY">Bellville</option>
+            <option value="1">Cape Town</option>
+            <option value="2">Paarl</option>
+            <option value="3">Bellville</option>
         </select>
+        <button type="submit">Filter</button>
     </div>
 
 
     <div class="regDisplay">
         <ul>
-            <li>{{regNumbers}}</li>
+            {{#each regNumb}}
+            <li class="regColor">{{this.reg_numb}}</li>
+            {{/each}}
         </ul>
     </div>
+
+</form>
 
 
     <form action="/clear" method="GET">
