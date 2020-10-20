@@ -1,0 +1,42 @@
+<div class="row">
+    <form action="/reg_numbers" method="POST">
+        <div class="header">
+            <h1>The RegNumber Display</h1>
+        </div>
+        <div class="example">
+            <p class="eg">e.g. CA 54321 | CY 123-456 | CJ 143812</p>
+        </div>
+        <div class="main">
+            <input name="regInput" class="regString" placeholder="enter registration here">
+            <button type="submit" name="addBtn">Add</button>
+        </div>
+        <div class="error">
+
+        </div>
+    </form>
+
+
+    <div class="dropDown ">
+        <select name="filter">
+            <option value="all">All</option>
+            <option value="CA">Cape Town</option>
+            <option value="CJ">Paarl</option>
+            <option value="CY">Bellville</option>
+        </select>
+    </div>
+
+
+    <div class="regDisplay">
+        <ul>
+            <li>{{regNumbers}}</li>
+        </ul>
+    </div>
+
+
+    <form action="/clear" method="GET">
+
+        <div class="clear">
+            <button type="submit" name="clearBtn">Clear items</button>
+        </div>
+    </form>
+</div>
