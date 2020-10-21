@@ -11,32 +11,29 @@
             <input name="regInput" class="regString" placeholder="enter registration here">
             <button type="submit" name="addBtn">Add</button>
         </div>
-        <div class="error">
-
-        </div>
     </form>
 
-<form action="/reg_numbers" method="GET">
-    <div class="dropDown ">
-        <select name="filter">
-            <option value="all">All</option>
-            <option value="1">Cape Town</option>
-            <option value="2">Paarl</option>
-            <option value="3">Bellville</option>
-        </select>
-        <button type="submit">Filter</button>
-    </div>
+    <form action="/reg_numbers" method="GET">
+        <div class="dropDown ">
+            <select name="filter">
+                <option value='all'>All</option>
+                <option value='1'>Cape Town</option>
+                <option value='2'>Paarl</option>
+                <option value='3'>Bellville</option>
+            </select>
+            <button type="submit">Filter</button>
+        </div>
 
 
-    <div class="regDisplay">
-        <ul>
-            {{#each regNumb}}
-            <li class="regColor">{{this.reg_numb}}</li>
-            {{/each}}
-        </ul>
-    </div>
+        <div class="regDisplay">
+            <ul>
+                {{#each regNumb}}
+                <li class="regColor">{{this.reg_numb}}</li>
+                {{/each}}
+            </ul>
+        </div>
 
-</form>
+    </form>
 
 
     <form action="/clear" method="GET">
@@ -45,4 +42,14 @@
             <button type="submit" name="clearBtn">Clear items</button>
         </div>
     </form>
+    <div class="error">
+        {{#if messages}}
+        {{messages.error}}
+        {{/if}}
+    </div>
 </div>
+<script>
+    setTimeout(function () {
+        document.querySelector(".error").innerHTML = ""
+    }, 2000)
+</script>

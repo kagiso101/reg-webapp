@@ -126,6 +126,7 @@
 	}
 	.error {
 		color: red;
+		font-size: 2em;
 	}
 	.regColor {
 		border: solid #0dff00 0.2em;

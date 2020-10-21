@@ -15,7 +15,7 @@ const pool = new Pool({
 
 var Reg = require("./reg")
 //instantiate 
-const reg = Reg()
+const reg = Reg(pool)
 let app = express();
 
 //setup handlebars ,Body-parser and public
@@ -53,7 +53,14 @@ app.post('/reg_numbers', async function (req, res) {
 
     var numb = req.body.regInput
 
-    await reg.addReg(numb)
+    if (numb) {
+       await reg.addReg(numb)
+    }
+    else{
+        req.flash('error', 'please enter a registration!')
+    }
+
+
     var all = await reg.allReg()
 
     res.render('home', {

@@ -1,12 +1,6 @@
-module.exports = function () {
+module.exports = function (pool) {
 
-
-    const pg = require("pg");
-    const Pool = pg.Pool;
-    const connectionString = process.env.DATABASE_URL || 'postgresql://kagiso:123@localhost:5432/registrations';
-    const pool = new Pool({
-        connectionString
-    });
+;
 
 
     //adds to db
@@ -27,22 +21,23 @@ module.exports = function () {
                 } else {
                     return false
                 }
-
+               
                 if (checking.rowCount === 0) {
                     await pool.query(`insert into reg (reg_numb, town_id) values ($1, $2)`, [regNumb, id])
                 }
+            
             }
         }
     }
 
     async function filterReg(town) {
-        if (town === "all") {
+        if (town === 'all') {
             const filtering = await pool.query(`select reg_numb from reg`)
             return filtering.rows
         }
         else {
-         const others = await pool.query(`select * from reg where town_id = $1`, [town])
-         return others.rows
+            const others = await pool.query(`select * from reg where town_id = $1`, [town])
+            return others.rows
         }
     }
 
