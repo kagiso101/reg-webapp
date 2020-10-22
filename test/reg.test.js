@@ -20,6 +20,7 @@ describe("The Registration function", function () {
 
 
     it("should be able to add registration to the database", async function () {
+        const reg = Reg(pool)
 
         var number = 'CA 1234'
 
@@ -30,6 +31,7 @@ describe("The Registration function", function () {
     });
 
     it("should be able to add multiple registrations to the database", async function () {
+        const reg = Reg(pool)
 
         const number2 = 'CJ 123456';
         const number3 = "CY 2345";
@@ -44,6 +46,7 @@ describe("The Registration function", function () {
     });
 
     it("should be able to filter for Cape Town ", async function () {
+        const reg = Reg(pool)
 
         await reg.addReg("CJ 12345")
         await reg.addReg("CA 12345")
@@ -61,6 +64,7 @@ describe("The Registration function", function () {
     });
 
     it("should be able to filter for Bellville ", async function () {
+        const reg = Reg(pool)
 
 
         await reg.addReg("CJ 12345")
@@ -71,6 +75,7 @@ describe("The Registration function", function () {
 
 
     it("should return all the reg numbers", async function () {
+        const reg = Reg(pool)
 
         const number = "CA 1234";
         const number2 = "CJ 12345";
@@ -86,6 +91,7 @@ describe("The Registration function", function () {
 
 
     it("should be able to reset the dataBase", async function () {
+        const reg = Reg(pool)
 
         await reg.addReg('CA 12345')
         await reg.addReg('CJ 1234')
@@ -95,7 +101,7 @@ describe("The Registration function", function () {
         assert.deepEqual([], await reg.clear());
     });
 
-    after(function () {
+    after( async function () {
         pool.end();
     })
 });
