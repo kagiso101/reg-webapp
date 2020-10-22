@@ -1,11 +1,9 @@
 module.exports = function (pool) {
 
-;
-
 
     //adds to db
     async function addReg(regNumb) {
-
+    
         if (!regNumb == "") {//if input is not empty
             var tested = /C[AYJ] \d{3,6}$/.test(regNumb)
 
@@ -21,11 +19,14 @@ module.exports = function (pool) {
                 } else {
                     return false
                 }
-               
+
                 if (checking.rowCount === 0) {
                     await pool.query(`insert into reg (reg_numb, town_id) values ($1, $2)`, [regNumb, id])
                 }
-            
+
+            }
+            else{
+                return false
             }
         }
     }

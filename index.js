@@ -13,7 +13,8 @@ const pool = new Pool({
     connectionString
 });
 
-var Reg = require("./reg")
+var Reg = require("./reg");
+const e = require('express');
 //instantiate 
 const reg = Reg(pool)
 let app = express();
@@ -53,10 +54,17 @@ app.post('/reg_numbers', async function (req, res) {
 
     var numb = req.body.regInput
 
-    if (numb) {
-       await reg.addReg(numb)
+    var capital = numb.toUpperCase()
+
+    if (capital) {
+      var done =  await reg.addReg(capital)
+        // req.flash('success', 'SUCCESS!')
     }
-    else{
+    else if (done === false) {
+        req.flash('error', 'please enter a valid registration!')
+    }
+
+    else {
         req.flash('error', 'please enter a registration!')
     }
 

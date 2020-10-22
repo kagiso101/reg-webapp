@@ -128,6 +128,12 @@
 		color: red;
 		font-size: 2em;
 	}
+	.success {
+		color:;
+		font-size: 2em;
+		color: #0dff00;
+
+	}
 	.regColor {
 		border: solid #0dff00 0.2em;
 		padding: 1em;

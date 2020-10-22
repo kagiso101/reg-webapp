@@ -35,6 +35,11 @@
 
     </form>
 
+    <div class="success">
+        {{#if messages}}
+        {{messages.success}}
+        {{/if}}
+    </div>
 
     <form action="/clear" method="GET">
 
@@ -52,4 +57,9 @@
     setTimeout(function () {
         document.querySelector(".error").innerHTML = ""
     }, 2000)
+
+
+     setTimeout(function () {
+        document.querySelector(".success").innerHTML = ""
+    }, 1000)
 </script>
