@@ -1,4 +1,6 @@
+ 
 
+ 
 create table towns
 (
     id serial not null primary key,
