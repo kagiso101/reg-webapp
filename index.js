@@ -57,13 +57,14 @@ app.post('/reg_numbers', async function (req, res) {
     var capital = numb.toUpperCase()
 
     if (capital) {
-      var done =  await reg.addReg(capital)
-        // req.flash('success', 'SUCCESS!')
+      await reg.addReg(capital)
+      if(/C[AYJ] \d{3,6}$/.test(capital) === true){
+          req.flash('success', 'SUCCESS!')
+      }
+      else{
+          req.flash('error', 'enter a valid registration!')
+      }
     }
-    else if (done === false) {
-        req.flash('error', 'please enter a valid registration!')
-    }
-
     else {
         req.flash('error', 'please enter a registration!')
     }
