@@ -21,17 +21,17 @@ describe("The Registration function", function () {
 
     it("should be able to add registration to the database", async function () {
 
-        var number = "CA 1234"
+        var number = 'CA 1234'
 
         await reg.addReg(number)
 
 
-        assert.deepEqual([{ reg_numb: "CA 1234" }], await reg.allReg());
+        assert.deepEqual([{ reg_numb: 'CA 1234' }], await reg.allReg());
     });
 
     it("should be able to add multiple registrations to the database", async function () {
 
-        const number2 = "CJ 123456";
+        const number2 = 'CJ 123456';
         const number3 = "CY 2345";
         const number4 = "CA 876-568";
 
