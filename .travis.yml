@@ -1,14 +1,14 @@
 language: node_js
 
 env:
-  - DATABASE_URL=postgresql://postgres@localhost:5432/registrations2
+  - DATABASE_URL=postgresql://postgres@localhost:5432/registrations
 
 node_js:  
   - "12.18.3"
 
 before_script:
-  - psql -c 'create database  registrations2;' -U postgres
-  - psql -U postgres -d registrations2 -a -f reg.sql
+  - psql -c 'create database  registrations;' -U postgres
+  - psql -U postgres -d registrations -a -f reg.sql
 
 services:
   - postgresql

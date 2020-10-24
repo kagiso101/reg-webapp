@@ -4,7 +4,7 @@ let Reg = require('../reg')
 
 const pg = require("pg");
 const Pool = pg.Pool;
-const connectionString = process.env.DATABASE_URL || 'postgresql://kagiso:123@localhost:5432/registrations2';
+const connectionString = process.env.DATABASE_URL || 'postgresql://kagiso:123@localhost:5432/registrations';
 const pool = new Pool({
     connectionString
 });
