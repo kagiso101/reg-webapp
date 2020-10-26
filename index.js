@@ -4,6 +4,8 @@ var exphbs = require('express-handlebars');//to render templates
 const bodyParser = require('body-parser');//require body parser for htm functionality
 const flash = require('express-flash');
 const session = require('express-session');
+var Reg = require("./reg");
+const Routes = require('./routes')
 
 
 const pg = require("pg");
@@ -13,10 +15,9 @@ const pool = new Pool({
     connectionString
 });
 
-var Reg = require("./reg");
-const e = require('express');
 //instantiate 
 const reg = Reg(pool)
+const routes = Routes(reg)
 let app = express();
 
 //setup handlebars ,Body-parser and public
@@ -41,61 +42,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.get('/', async function (req, res) {
-
-    var all = await reg.allReg()
-
-    res.render('home', {
-        regNumb: all
-    })
-})
-
-app.post('/reg_numbers', async function (req, res) {
-
-    var numb = req.body.regInput
-
-    var capital = numb.toUpperCase()
-
-    if (capital) {
-      await reg.addReg(capital)
-      if(/C[AYJ] \d{3,6}$/.test(capital) === true){
-          req.flash('success', 'SUCCESS!')
-      }
-      else{
-          req.flash('error', 'enter a valid registration!')
-      }
-    }
-    else {
-        req.flash('error', 'please enter a registration!')
-    }
-
-
-    var all = await reg.allReg()
-
-    res.render('home', {
-        regNumb: all
-    })
-
-
-})
-
-app.get('/reg_numbers', async function (req, res) {
-    var filter = req.query.filter
-
-    const filtering = await reg.filterReg(filter)
-
-    res.render('home', {
-        regNumb: filtering
-    })
-})
-
-
-app.get('/clear', async function (req, res) {
-    await reg.clear()
-    res.render('home')
-})
-
-
+app.get('/', routes.home) 
+app.post('/reg_numbers', routes.add) 
+app.get('/reg_numbers', routes.filter) 
+app.get('/clear',routes.clear)
 
 
 //Port setup
