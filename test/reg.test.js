@@ -16,8 +16,7 @@ describe("The Registration function", function () {
 
     beforeEach(async function () {
         await pool.query(`delete from reg`)
-        await pool.query(`delete from towns`)
-
+       
     });
 
 

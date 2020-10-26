@@ -3,29 +3,29 @@ module.exports = function (pool) {
 
     //adds to db
     async function addReg(regNumb) {
-    
-        if (!regNumb == "") {//if input is not empty
-            var tested = /C[AYJ] \d{3,6}$/.test(regNumb)
 
-            if (tested) {
+        if (!regNumb == "") {//if input is not empty
+           
+            if ( /C[AYJ] \d{3,6}$/.test(regNumb)) {
                 //splitting reg into code and number 
                 const code = regNumb.substring(0, 2)
                 const theId = await pool.query(`select id from towns where code = $1`, [code])
                 const id = theId.rows[0].id
-
+        
                 let checking
                 if (id > 0) {
                     checking = await pool.query(`select * from reg where reg_numb = $1`, [regNumb])
                 } else {
                     return false
                 }
-
+                
+                
                 if (checking.rowCount === 0) {
                     await pool.query(`insert into reg (reg_numb, town_id) values ($1, $2)`, [regNumb, id])
                 }
 
             }
-            else{
+            else {
                 return false
             }
         }
@@ -58,4 +58,3 @@ module.exports = function (pool) {
         clear
     }
 }
-

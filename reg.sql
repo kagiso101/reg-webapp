@@ -11,3 +11,8 @@ create table reg
     town_id int,
     foreign key (town_id) references towns(id)
 );
+
+
+insert into towns (town, code) values ('Cape Town', 'CA');
+insert into towns (town, code) values ('Paarl', 'CJ');
+insert into towns (town, code) values ('Bellville', 'CY');
