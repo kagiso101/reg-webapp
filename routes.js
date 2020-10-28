@@ -1,3 +1,4 @@
+
 module.exports = function regRoutes(reg) {
 
     async function home(req, res, next) {
@@ -16,10 +17,14 @@ module.exports = function regRoutes(reg) {
         var numb = req.body.regInput
         var capital = numb.toUpperCase()
         try {
-            if (capital) {
-                await reg.addReg(capital)
-                if (/C[AYJ] \d{3,6}$/.test(capital) === true) {
-                    req.flash('success', 'SUCCESS!')
+            if (capital !== "") {
+                if (/C[AYJ] \d{3,6}$/.test(capital)) {
+                    if (await reg.regExists(capital) === 0) {
+                        await reg.addReg(capital)
+                        req.flash('success', 'SUCCESS!')
+                    }else {
+                        req.flash('error', 'registration already entered!')
+                    }
                 }
                 else {
                     req.flash('error', 'enter a valid registration!')
@@ -28,6 +33,11 @@ module.exports = function regRoutes(reg) {
             else {
                 req.flash('error', 'please enter a registration!')
             }
+
+
+
+            // if () {
+            // }
             var all = await reg.allReg()
             res.render('home', {
                 regNumb: all
