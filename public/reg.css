@@ -19,6 +19,9 @@
 		text-decoration: none;
 		font-size: 17px;
 	}
+	.ce{
+		border-radius: 1px solid #0dff00;
+	}
 	.topnav a:hover {
 		background-color: #ddd;
 		color: black;
@@ -62,11 +65,11 @@
 	}
 	button {
 		cursor: default;
-		padding: 9px;
+		padding: 8px;
 		background: #0dff00;
 		color: #000;
 		border-radius: 12px;
-		font-size: 20px;
+		font-size: 16px;
 		font-family: 'Press Start 2P', cursive;
 	}
 	.the_list {
@@ -126,6 +129,7 @@
 	}
 	.error {
 		color: red;
+		margin-bottom: 1em;
 		font-size: 2em;
 	}
 	.success {
@@ -138,7 +142,7 @@
 		border: solid #0dff00 0.2em;
 		padding: 1em;
 		margin: 1em;
-		border-radius: 1em;
+		border-radius: 0.5em;
 		color: #0dff00;
 		display: inline-block;
 	}

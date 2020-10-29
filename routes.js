@@ -1,4 +1,3 @@
-
 module.exports = function regRoutes(reg) {
 
     async function home(req, res, next) {
@@ -18,7 +17,7 @@ module.exports = function regRoutes(reg) {
         var capital = numb.toUpperCase()
         try {
             if (capital !== "") {
-                if (/C[AYJ] \d{3,6}$/.test(capital)) {
+                if (/C[AYJ] \d{3,6}$/.test(capital) || /C[AYJ] \d{3}-\d{3}$/.test(capital)) {
                     if (await reg.regExists(capital) === 0) {
                         await reg.addReg(capital)
                         req.flash('success', 'SUCCESS!')

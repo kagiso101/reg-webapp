@@ -6,7 +6,7 @@ module.exports = function (pool) {
 
         if (!regNumb == "") {//if input is not empty
 
-            if (/C[AYJ] \d{3,6}$/.test(regNumb)) {
+            if (/C[AYJ] \d{3,6}$/.test(regNumb) || /C[AYJ] \d{3}-\d{3}$/.test(regNumb)) {
                 //splitting reg into code and number 
                 const code = regNumb.substring(0, 2)
                 const theId = await pool.query(`select id from towns where code = $1`, [code])
